@@ -1,2 +1,5 @@
 {
+    "php.executablePath": "/opt/lampp/bin/php",
+    "workbench.iconTheme": "material-icon-theme",
+    "phpfmt.php_bin": "/opt/lampp/bin/php"
 }
