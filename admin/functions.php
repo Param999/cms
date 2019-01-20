@@ -1,5 +1,13 @@
 <?php
 
+function confirmQuery($result){
+    global $connection;
+
+    if(!$result){
+        die("Query failed " . mysqli_error($connection));
+    }
+}
+
 function insertCategories()
 {
     global $connection;
@@ -46,10 +54,66 @@ function fetchAllCategories()
         echo "<tr>";
         echo "<td>{$cat_id}</td>";
         echo "<td>{$cat_title}</td>";
-        echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
         echo "<td><a href='categories.php?edit={$cat_id}'>Edit</a></td>";
+        echo "<td><a href='categories.php?delete={$cat_id}'>Delete</a></td>";
         echo "</tr>";
 
+    }
+}
+
+function deletePost(){
+    global $connection;
+    if(isset($_GET['delete'])){
+        $del_post_id = $_GET['delete'];
+        $query = "DELETE FROM posts where post_id = {$del_post_id}";
+        $del_query_result = mysqli_query($connection, $query);
+        if (!$del_query_result) {
+            die('Delete failed!' . mysqli_error($connection));
+        } else {
+            header("Location: posts.php");
+        }
+    }
+}
+
+function deleteComment(){
+    global $connection;
+    if(isset($_GET['delete'])){
+        $del_comment_id = $_GET['delete'];
+        $query = "DELETE FROM comments where comment_id = {$del_comment_id}";
+        $del_query_result = mysqli_query($connection, $query);
+        if (!$del_query_result) {
+            die('Delete failed!' . mysqli_error($connection));
+        } else {
+            header("Location: comments.php");
+        }
+    }
+}
+
+function approveComment(){
+    global $connection;
+    if(isset($_GET['approve'])){
+        $comment_id = $_GET['approve'];
+        $query = "UPDATE comments SET comment_status = 'approved' WHERE comment_id = {$comment_id}";
+        $comment_result = mysqli_query($connection, $query);
+        if (!$comment_result) {
+            die('Query failed!' . mysqli_error($connection));
+        } else {
+            header("Location: comments.php");
+        }
+    }
+}
+
+function unapproveComment(){
+    global $connection;
+    if(isset($_GET['unapprove'])){
+        $comment_id = $_GET['unapprove'];
+        $query = "UPDATE comments SET comment_status = 'unapproved' WHERE comment_id = {$comment_id}";
+        $comment_result = mysqli_query($connection, $query);
+        if (!$comment_result) {
+            die('Query failed!' . mysqli_error($connection));
+        } else {
+            header("Location: comments.php");
+        }
     }
 }
 

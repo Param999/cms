@@ -13,7 +13,11 @@
             <div class="col-md-8">
 
             <?php
-                $query = "SELECT * FROM posts WHERE post_status = 'published'";
+
+                if(isset($_GET['category'])){
+                    $cat_id = $_GET['category'];
+
+                    $query = "SELECT * FROM posts WHERE post_category_id = $cat_id";
                 $posts_result = mysqli_query($connection, $query);
 
                 while($row = mysqli_fetch_assoc($posts_result)){
@@ -45,7 +49,7 @@
 
                 <hr>
 
-            <?php } ?>
+            <?php }} ?>
 
                 <!-- Pager -->
                 <ul class="pager">
