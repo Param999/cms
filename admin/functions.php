@@ -117,4 +117,46 @@ function unapproveComment(){
     }
 }
 
+function deleteUser(){
+    global $connection;
+    if(isset($_GET['delete'])){
+        $del_user_id = $_GET['delete'];
+        $query = "DELETE FROM users where user_id = {$del_user_id}";
+        $del_query_result = mysqli_query($connection, $query);
+        if (!$del_query_result) {
+            die('Delete failed!' . mysqli_error($connection));
+        } else {
+            header("Location: users.php");
+        }
+    }
+}
+
+function makeAdmin(){
+    global $connection;
+    if(isset($_GET['admin'])){
+        $user_id = $_GET['admin'];
+        $query = "UPDATE users SET user_role = 'admin' WHERE user_id = {$user_id}";
+        $result = mysqli_query($connection, $query);
+        if (!$result) {
+            die('Query failed!' . mysqli_error($connection));
+        } else {
+            header("Location: users.php");
+        }
+    }
+}
+
+function makeSub(){
+    global $connection;
+    if(isset($_GET['sub'])){
+        $user_id = $_GET['sub'];
+        $query = "UPDATE users SET user_role = 'subscriber' WHERE user_id = {$user_id}";
+        $result = mysqli_query($connection, $query);
+        if (!$result) {
+            die('Query failed!' . mysqli_error($connection));
+        } else {
+            header("Location: users.php");
+        }
+    }
+}
+
 ?>

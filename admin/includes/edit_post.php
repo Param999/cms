@@ -58,7 +58,7 @@
 
     <div class="form-group">
         <label for="post_title">Post Title</label>
-        <input type="text" class="form-control" name="post_title" value=<?php echo $post_title; ?>>    
+        <input type="text" class="form-control" name="post_title" value="<?php echo $post_title; ?>">    
     </div>
 
     <div class="form-group">
@@ -79,7 +79,7 @@
 
     <div class="form-group">
         <label for="post_author">Post Author</label>
-        <input type="text" class="form-control" name="post_author" value=<?php echo $post_author; ?>>    
+        <input type="text" class="form-control" name="post_author" value="<?php echo $post_author; ?>">    
     </div>
 
     <div class="form-group">
@@ -95,7 +95,7 @@
 
     <div class="form-group">
         <label for="post_tags">Post Tags</label>
-        <input type="text" class="form-control" name="post_tags" value=<?php echo $post_tags; ?>>    
+        <input type="text" class="form-control" name="post_tags" value="<?php echo $post_tags; ?>">    
     </div>
 
     <div class="form-group">
