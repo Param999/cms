@@ -159,4 +159,13 @@ function makeSub(){
     }
 }
 
+function countRows($table){
+    global $connection;
+    $query = "SELECT * FROM {$table}";
+    $result = mysqli_query($connection, $query);
+    confirmQuery($result);
+    $count = mysqli_num_rows($result);
+    return $count;
+}
+
 ?>
