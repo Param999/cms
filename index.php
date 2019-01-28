@@ -24,10 +24,10 @@
                     $post_image = $row['post_image'];
                     $post_content = substr($row['post_content'], 0, 100);
             ?>
-                <h1 class="page-header">
+               <!-- <h1 class="page-header">
                     Page Heading
                     <small>Secondary Text</small>
-                </h1>
+                </h1> -->
 
                 <!-- First Blog Post -->
                 <h2>
@@ -41,7 +41,7 @@
                 <img class="img-responsive" src="./images/<?php echo $post_image ?>" alt="">
                 <hr>
                 <p><?php echo $post_content ?></p>
-                <a class="btn btn-primary" href="#">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
+                <a class="btn btn-primary" href="post.php?post_id=<?php echo $post_id;?>">Read More <span class="glyphicon glyphicon-chevron-right"></span></a>
 
                 <hr>
 
